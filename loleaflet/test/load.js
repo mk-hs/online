@@ -123,18 +123,16 @@ window.onload = function() {
 				window.app.socket.sendMessage(zoomMessage);
 				await sleep(500);
 				// mesh the keyboard:
-				let dummyInput = 'askdjf ,asdhflkas r;we f;akdn.adh ;o wh;fa he;qw e.fkahsd ;vbawe.kguday;f vas.,mdb kaery kejraerga';
-				map.focus();
+				let dummyInput = 'mememememememememememememememememememememmememememememememememememememememememememmememememememememememememememememememememmememememememememememememememememememememeeeememememememememememememememememememememememememememememememememememememememememememmememememememememememememememememememememmememememememememememememememememememememmememememememememememememememememememememeeeemememememememememememememememememememememe';
+				//map.focus();
 				for (let i = 0; i < dummyInput.length; i++)
 				{
 					console.debug('sending input key: ' + dummyInput[i].charCodeAt(0));
 					window.app.socket.sendMessage(
 						'key' +
 						' type=' + 'input' +
-						' char=' + dummyInput[i].charCodeAt(0) +
-						' key=' + map.keyboard._toUNOKeyCode(dummyInput[i].charCodeAt(0)) +
-						'\n'
-					);
+						' char=' + dummyInput.charCodeAt(i) +
+						' key=' + map.keyboard._toUNOKeyCode(dummyInput.charCodeAt(i)));
 					await sleep(30);
 				}
 			}
