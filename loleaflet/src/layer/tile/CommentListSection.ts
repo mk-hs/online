@@ -1492,7 +1492,7 @@ class CommentSection {
 					comment.avatar = this.map._viewInfoByUserName[comment.author].userextrainfo.avatar;
 				}
 				var commentSection = new app.definitions.Comment(comment, {}, this);
-				this.containerObject.addSection(commentSection);
+				this.containerObject.addSection(commentSection, (i < commentList.length - 1 ? true: false));
 				this.sectionProperties.commentList.push(commentSection);
 				this.updateResolvedState(this.sectionProperties.commentList[i]);
 			}

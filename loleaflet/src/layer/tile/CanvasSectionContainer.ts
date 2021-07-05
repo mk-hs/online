@@ -1727,9 +1727,9 @@ class CanvasSectionContainer {
 		}
 	}
 
-	addSection (newSection: CanvasSectionObject) {
+	addSection (newSection: CanvasSectionObject, bulkInsert: boolean = false) {
 		if (this.newSectionChecks(newSection)) {
-			this.pushSection(newSection);
+			this.pushSection(newSection, bulkInsert);
 			return true;
 		}
 		else {
@@ -1790,7 +1790,7 @@ class CanvasSectionContainer {
 		}
 	}
 
-	private pushSection (newSection: CanvasSectionObject) {
+	private pushSection (newSection: CanvasSectionObject, bulkInsert: boolean = false) {
 		// Every section can draw from Point(0, 0), their drawings will be translated to myTopLeft position.
 		newSection.context = this.context;
 		newSection.documentTopLeft = this.documentTopLeft;
@@ -1799,10 +1799,12 @@ class CanvasSectionContainer {
 		newSection.sectionProperties.section = newSection;
 		this.sections.push(newSection);
 		this.addSectionFunctions(newSection);
-		this.updateBoundSectionLists();
 		newSection.onInitialize();
-		this.reNewAllSections(false);
-		this.drawSections();
+		if (!bulkInsert) {
+			this.updateBoundSectionLists();
+			this.reNewAllSections(false);
+			this.drawSections();
+		}
 	}
 
 	removeSection (name: string) {
